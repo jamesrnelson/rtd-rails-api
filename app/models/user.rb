@@ -1,3 +1,5 @@
-class User
+class User < ApplicationRecord
 
+  def thing
+  end
 end
