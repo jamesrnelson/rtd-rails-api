@@ -11,6 +11,7 @@ The front end for this project is available [here](https://github.com/Awiedenman
 ## Setup
 
 Standard Rails setup: 
+
 `bundle
 
 rake db:{create,migrate,seed}
