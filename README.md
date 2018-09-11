@@ -12,13 +12,13 @@ The front end for this project is available [here](https://github.com/Awiedenman
 
 Standard Rails setup: 
 
-`bundle
+```bundle
 
 rake db:{create,migrate,seed}
 
 rspec
 
-rails s`
+rails s```
 
 * Ruby version: 2.5.0
 
