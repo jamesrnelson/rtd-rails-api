@@ -12,8 +12,11 @@ The front end for this project is available [here](https://github.com/Awiedenman
 
 Standard Rails setup: 
 `bundle
+
 rake db:{create,migrate,seed}
+
 rspec
+
 rails s`
 
 * Ruby version: 2.5.0
