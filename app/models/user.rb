@@ -1,5 +1,3 @@
 class User < ApplicationRecord
-
-  def thing
-  end
+  has_many :itineraries
 end
