@@ -4,7 +4,7 @@ describe GoogleDirectionsService do
   subject { GoogleDirectionsService.new(
     "12 Cedar Pl, Denver CO",
     "1331 17th St, Denver CO",
-    "12:00"
+    "13:00"
   ) }
 
   it 'exists' do
