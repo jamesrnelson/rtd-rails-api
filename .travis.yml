@@ -1,10 +1,13 @@
 language: ruby
 rvm:
-  - 2.5.0
+- 2.5.0
 install:
-  - gem install bundler
-  - bundle install
+- gem install bundler
+- bundle install
 script:
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-  - bundle exec rspec
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rspec
+env:
+  matrix:
+    secure: FZnN92f0V5LIGz0BQKDGs+vX23s1ywTcIlQgRNyEmSdMRyWGwirJcCYQeo3pV6j/xu06sXss93TGF9efRSBoNutiZRVcwy9VbsZs6wQMTKnKAlwJsCToSkws0IYCgIeAUdo0uoot0ySO8+EcwJLSTxFbAb3j1pmdPGcNs43144/jdINFZiPiGSuvWgZ6R8gmgnzHfDryJytq0e01KFmO2oBX9YpOG+CTZWJTFjfj/6bonMqIlci7PNNbNO4QnbOH5PipsomnxmauPp3MDFiKsNc8L0xWVu074yfDcD39trRZ1NNNSJ9/lXMsw/CMSdpwI4Rui9TT38o72exHPJrS/vsi4eDZqNNOS/rG/zIwXbSEi7Y9ejhlsVgFz7ti6b4BDUSVO8p2xc8FZlDJQ1HxOZhgp67kR0fMn5u+ZFW6AEwfFf9Gqz9QXAe6SxCBCBAYP7QA8WvzF64kNsgcheMTeS4ByOJNE64XbeI88+JyQPelEAimCQ3faF1HE1fnFz/eHjWjU4ri43A2mBxEiFFBBrAK0BDpEejA1Pvt67Yt5fUZ3kNtF7+2vt5Lh3MT0KEU2sp3lIpaTpILftAwpErJIDmiOXPlDjHOM3uI0RwSaWQg+4PQFmqvrd76VdXyEVlIJiG6igVMrab9AXHCzn9QyeaYtMyS9uvzeQK2Wi9MA2k=
