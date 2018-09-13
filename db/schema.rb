@@ -10,20 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_09_13_184239) do
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_09_12_204008) do
-=======
-ActiveRecord::Schema.define(version: 2018_09_13_184239) do
->>>>>>> Adds email, firebase_id, and username to User model
-=======
 ActiveRecord::Schema.define(version: 2018_09_13_204245) do
->>>>>>> runs migrations to change firebase_id to uid for user
->>>>>>> resolves merge conflicts in user model
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
