@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_150731) do
+ActiveRecord::Schema.define(version: 2018_09_12_204008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 2018_09_12_150731) do
     t.string "duration"
     t.string "color"
     t.integer "num_stops"
+    t.string "vehicle_type"
+    t.string "credit_name"
+    t.string "credit_url"
+    t.string "travel_mode"
     t.index ["possible_route_id"], name: "index_steps_on_possible_route_id"
   end
 
