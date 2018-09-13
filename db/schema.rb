@@ -9,11 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-<<<<<<< HEAD
 
-=======
-ActiveRecord::Schema.define(version: 2018_09_13_184239) do
->>>>>>> Resolves save conflict
 
 ActiveRecord::Schema.define(version: 2018_09_13_204245) do
 
