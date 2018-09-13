@@ -1,5 +1,6 @@
 class StepSerializer < ActiveModel::Serializer
-  attributes  :headsign,
+  attributes  :id,
+              :headsign,
               :short_name,
               :name,
               :distance,

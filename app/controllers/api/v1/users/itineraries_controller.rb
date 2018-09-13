@@ -3,7 +3,8 @@ class Api::V1::Users::ItinerariesController < ApiController
     @new_itinerary = CreateWholeTrip.new(params[:id], itinerary_params)
     @new_itinerary.create_steps
     itinerary = @new_itinerary.itinerary
-    render json: itinerary
+    possible_route = itinerary.possible_routes
+    render json: possible_route
   end
 
   private
