@@ -61,7 +61,12 @@ ActiveRecord::Schema.define(version: 2018_09_13_204245) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "email"
+<<<<<<< HEAD
     t.string "uid"
+=======
+    t.string "firebase_id"
+    t.string "username"
+>>>>>>> resolves merge conflict
   end
 
   add_foreign_key "itineraries", "users"
