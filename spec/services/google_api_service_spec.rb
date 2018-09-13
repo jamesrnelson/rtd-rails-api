@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe GoogleDirectionsService do
   subject { GoogleDirectionsService.new(
-    "12+Cedar+Pl+Denver+CO",
-    "1331+17th+St+Denver+CO",
-    1536692079
+    "12 Cedar Pl, Denver CO",
+    "1331 17th St, Denver CO",
+    "13:00"
   ) }
 
   it 'exists' do
