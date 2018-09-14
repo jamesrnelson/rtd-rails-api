@@ -178,4 +178,12 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 
     render json: favorites
   end
+
+  def create
+    @new_favorite = CreateFavoriteTrip.new(params[:id], favorite_params)
+    # are we passing in an entire selected itinerary in params? 
+    # would there be any reason to create steps and possible_route again? 
+    # I'm guessing no, but I do need to research what else favorite needs
+    # i.e. , how will the cron job get the data it needs?
+  end
 end
