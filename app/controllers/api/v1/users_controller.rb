@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
   def create
-    User.new(user_params)
+    user = User.create(user_params)
+    render json: user
   end
 
 
   private
 
   def user_params
-    require(:user).permit(:email, :uid)
+    require(:user).permit(:username, :email, :uid)
   end
 end
