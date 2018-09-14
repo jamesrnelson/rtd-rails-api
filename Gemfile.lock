@@ -200,7 +200,7 @@ DEPENDENCIES
   bundler
   byebug
   database_cleaner
-  factory_bot_rails
+  factory_bot_rails (~> 4.0)
   faraday
   figaro
   listen (>= 3.0.5, < 3.2)
