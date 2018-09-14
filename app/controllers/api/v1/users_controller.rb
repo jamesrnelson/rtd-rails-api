@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 class Api::V1::UsersController < ApplicationController
+=======
+class Api::V1::Users::UsersController < ApplicationController
+>>>>>>> changes name of users controller
 
   def create
     user = User.create(user_params)
