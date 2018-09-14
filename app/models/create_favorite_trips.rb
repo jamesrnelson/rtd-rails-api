@@ -1,0 +1,4 @@
+class CreateFavoriteTrips < CreateWholeTrip
+
+
+end
