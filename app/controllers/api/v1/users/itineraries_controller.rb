@@ -7,6 +7,11 @@ class Api::V1::Users::ItinerariesController < ApiController
     render json: possible_route
   end
 
+  def index
+    user = User.find_by(id: params[:id])
+    render json: user.possible_routes
+  end
+
   private
 
     def itinerary_params
