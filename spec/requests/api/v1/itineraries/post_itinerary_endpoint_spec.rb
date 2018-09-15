@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'POST /api/v1/users/:id/itineraries' do
-  it 'accepts json of start_address, end_address, and departure_time', vcr: true do
+  xit 'accepts json of start_address, end_address, and departure_time', vcr: true do
     user = create(:user)
 
     post "/api/v1/users/#{user.id}/itineraries", params: { start_address: "100 W 14th Ave Pkwy Denver CO 80204", end_address: "Denver International Airport", departure_time: '17:00' }
@@ -14,7 +14,7 @@ describe 'POST /api/v1/users/:id/itineraries' do
     expect(new_itinerary[0][:steps].last[:id]).to eq(4)
   end
 
-  it 'also accepts json including arrival time', vcr: true do
+  xit 'also accepts json including arrival time', vcr: true do
     user = create(:user)
 
 

@@ -5,9 +5,10 @@ Rails.application.routes.draw do
       post '/users', to: 'users#create'
       get '/users/:uid', to: 'users#show'
       namespace :users do
-        get '/:id/favorite_itineraries', to: 'favorite_itineraries#index'
-        get '/:id/itineraries', to: 'itineraries#index'
-        post '/:id/itineraries', to: 'itineraries#create'
+        get '/:uid/favorite_itineraries', to: 'favorite_itineraries#index'
+        post '/:uid/favorite_itineraries', to: 'favorite_itineraries#create'
+        get '/:uid/itineraries', to: 'itineraries#index'
+        post '/:uid/itineraries', to: 'itineraries#create'
       end
     end
   end
