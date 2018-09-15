@@ -4,7 +4,8 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     binding.pry
     user = User.find(params[:uid])
     itinerary = user.itineraries.find(params[:itinerary_id])
-    itinerary.update(favorite:true, favorite_params)
+    itinerary.update(favorite: true)
+    itinerary.update(favorite_params)
     @new_favorite = CreateFavoriteTrip.new(params[:itinerary_id], favorite_params)
     @new_favorite.create_steps
     favorite = @new_favorite.favorite

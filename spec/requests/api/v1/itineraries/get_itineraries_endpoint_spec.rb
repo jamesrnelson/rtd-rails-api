@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe 'GET /api/v1/users/:id/itineraries' do
-  it 'should return all itineraries that a user has searched for' do
+  xit 'should return all itineraries that a user has searched for' do
     user = create(:user)
-    itinerary1 = create(:itinerary, user_id: user.id)
-    itinerary2 = create(:itinerary, user_id: user.id)
+    itinerary1 = create(:itinerary, user_id: user.uid)
+    itinerary2 = create(:itinerary, user_id: user.uid)
     possible_route1 = create(:possible_route, itinerary_id: itinerary1.id)
     possible_route2 = create(:possible_route, itinerary_id: itinerary2.id)
     step1 = create(:step, possible_route_id: possible_route1.id)
