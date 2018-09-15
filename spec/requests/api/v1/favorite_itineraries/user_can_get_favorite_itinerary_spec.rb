@@ -31,7 +31,6 @@ describe "GET /api/v1/users/:uid/favorites/:favorite_id" do
 
     expect(response).to be_successful
     favorite = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
     expect(favorite[:id]).to eq(fav_itinerary_2.id)
     expect(favorite[:title]).to eq(fav_itinerary_2.title)
   end
