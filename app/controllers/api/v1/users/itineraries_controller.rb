@@ -1,6 +1,8 @@
 class Api::V1::Users::ItinerariesController < ApiController
+
   def create
-    @new_itinerary = CreateWholeTrip.new(params[:id], itinerary_params)
+    user = User.find_by(uid: params[:uid])
+    @new_itinerary = CreateWholeTrip.new(user.id, itinerary_params)
     @new_itinerary.create_steps
     itinerary = @new_itinerary.itinerary
     possible_route = itinerary.possible_routes
@@ -8,7 +10,7 @@ class Api::V1::Users::ItinerariesController < ApiController
   end
 
   def index
-    user = User.find_by(id: params[:id])
+    user = User.find_by(uid: params[:uid])
     render json: user.possible_routes
   end
 
