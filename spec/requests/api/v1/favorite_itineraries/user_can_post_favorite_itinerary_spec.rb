@@ -11,7 +11,6 @@ describe 'POST /api/v1/users/:id/favorite_itineraries' do
     expect(response).to be_successful
 
     new_favorite = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
     expect(new_favorite[0][:title]).to eq("Title")
     expect(new_favorite[0][:favorite]).to eq(true)
   end
