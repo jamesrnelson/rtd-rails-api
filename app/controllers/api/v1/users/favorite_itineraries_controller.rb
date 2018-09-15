@@ -17,6 +17,13 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     render json: favorites
   end
 
+  def show
+    user = User.find_by(uid: params[:uid])
+    favorite = user.itineraries.find(params[:itinerary_id])
+    # binding.pry
+    render json: favorite
+  end
+
 private
 
   def favorite_params
