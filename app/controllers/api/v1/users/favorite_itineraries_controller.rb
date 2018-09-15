@@ -12,7 +12,9 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def index
     user = User.find_by(uid: params[:uid])
-    render json: user.possible_routes
+    # binding.pry
+    favorites = user.itineraries.where(favorite: true)
+    render json: favorites
   end
 
 private
