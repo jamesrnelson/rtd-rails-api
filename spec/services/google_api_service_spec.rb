@@ -13,7 +13,7 @@ describe GoogleDirectionsService do
 
   context 'instance methods' do
     context '.trip_information' do
-      xit 'returns an object that contains an array of each "step" of a trip', vcr: true do
+      it 'returns an object that contains an array of each "step" of a trip', vcr: true do
         raw_search = subject.trip_information
 
         expect(raw_search).to have_key :arrival_time

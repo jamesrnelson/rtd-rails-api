@@ -1,30 +1,25 @@
 class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def create
-    binding.pry
-    user = User.find(params[:uid])
+    # binding.pry
+    user = User.find_by(uid: params[:uid])
     itinerary = user.itineraries.find(params[:itinerary_id])
     itinerary.update(favorite: true)
     itinerary.update(favorite_params)
-    @new_favorite = CreateFavoriteTrip.new(params[:itinerary_id], favorite_params)
-    @new_favorite.create_steps
-    favorite = @new_favorite.favorite
-    possible_route = favorite.possible_routes
-    render json: possible_route
-    # this is where subsequent calls go
-    # similar to create whole trip, associate all with this user
-    # and flag all as favorite, with current title
+    # binding.pry
+    render json: itinerary.possible_routes
   end
 
   def index
-    user = User.find_by(id: params[:id])
+    user = User.find_by(uid: params[:uid])
     render json: user.possible_routes
   end
 
 private
 
   def favorite_params
-    params.require(:itinerary).permit(:title)
+    # binding.pry
+    params.require(:favorite).permit(:title)
   end
 
 end

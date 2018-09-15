@@ -1,7 +1,8 @@
 class CreateWholeTrip
   attr_reader :user_id, :itinerary, :possible_route
   def initialize(user_id, attrs)
-    @user_id = attrs[:id]
+    # binding.pry
+    @user_id = user_id
     @start_address = attrs[:start_address]
     @end_address = attrs[:end_address]
     @departure_time = attrs[:departure_time]
