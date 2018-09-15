@@ -5,6 +5,10 @@ class Api::V1::UsersController < ApplicationController
     render json: user
   end
 
+  def show
+    user = User.find_by(uid: params[:uid])
+    render json: user
+  end
 
   private
 

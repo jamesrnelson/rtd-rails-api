@@ -1,6 +1,7 @@
 class PossibleRouteSerializer < ActiveModel::Serializer
-  attributes :itinerary_id, :start_address, :end_address, :favorite, :departure_time, :arrival_time, :duration, :distance
-  has_many :steps
+  attributes  :itinerary_id, :start_address, :end_address,
+              :favorite, :departure_time, :arrival_time,
+              :duration, :distance, :steps
 
   def favorite
     object.itinerary.favorite
@@ -16,5 +17,9 @@ class PossibleRouteSerializer < ActiveModel::Serializer
 
   def end_address
     object.itinerary.end_address
+  end
+
+  def steps
+    object.steps.order("id ASC")
   end
 end
