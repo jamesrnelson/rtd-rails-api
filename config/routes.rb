@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/users', to: 'users#create'
+      get '/users/:uid', to: 'users#show'
       namespace :users do
         get '/:id/favorite_itineraries', to: 'favorite_itineraries#index'
         get '/:id/itineraries', to: 'itineraries#index'
