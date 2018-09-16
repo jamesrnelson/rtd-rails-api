@@ -1,19 +1,21 @@
 class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def create
-    # binding.pry
     user = User.find_by(uid: params[:uid])
     itinerary = user.itineraries.find(params[:itinerary_id])
     itinerary.update(favorite: true)
     itinerary.update(favorite_params)
-    # binding.pry
     render json: itinerary.possible_routes
   end
 
   def index
     user = User.find_by(uid: params[:uid])
-    # binding.pry
+    user_id = user.id
     favorites = user.itineraries.where(favorite: true)
+    fav_trips = favorites.each do |fav|
+      CreateWholeTrip(user_id, fav)
+    end
+    binding.pry
     render json: favorites
   end
 
@@ -27,7 +29,6 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 private
 
   def favorite_params
-    # binding.pry
     params.require(:favorite).permit(:title)
   end
 
