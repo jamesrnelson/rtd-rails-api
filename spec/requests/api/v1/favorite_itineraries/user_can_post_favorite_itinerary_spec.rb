@@ -6,7 +6,7 @@ describe 'POST /api/v1/users/:id/favorite_itineraries' do
   
     itinerary = user.itineraries.create( start_address: "100 W. 14th Pkwy Denver CO 80204", end_address: "1331 17th St Denver CO")
     possible_route = create(:possible_route, itinerary_id: itinerary.id)
-    post "/api/v1/users/#{user.uid}/itineraries/#{itinerary.id}", params: {favorite: { title: "Title" }}
+    post "/api/v1/users/#{user.uid}/itineraries/#{itinerary.id}", params: { title: "Title" }
 
     expect(response).to be_successful
 

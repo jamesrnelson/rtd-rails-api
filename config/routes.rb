@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       namespace :users do
         get '/:uid/favorites', to: 'favorite_itineraries#index'
         get '/:uid/favorites/:itinerary_id', to: 'favorite_itineraries#show'
+        put '/:uid/favorites/:itinerary_id', to: 'favorite_itineraries#edit'
         post '/:uid/itineraries/:itinerary_id', to: 'favorite_itineraries#create'
         get '/:uid/itineraries', to: 'itineraries#index'
         post '/:uid/itineraries', to: 'itineraries#create'

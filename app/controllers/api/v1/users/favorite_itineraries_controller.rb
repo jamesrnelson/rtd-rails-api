@@ -21,10 +21,18 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     render json: favorite
   end
 
+  def edit
+    user = User.find_by(uid: params[:uid])
+    # binding.pry
+    favorite = user.itineraries.find(params[:itinerary_id])
+    favorite.update(favorite_params)
+    render json: favorite
+  end
+
 private
 
   def favorite_params
-    params.require(:favorite).permit(:title)
+    params.permit(:title)
   end
 
 end
