@@ -17,13 +17,21 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def show
     user = User.find_by(uid: params[:uid])
-    favorite = user.possible_routes.joins(:itinerary).find(params[:itinerary_id])
+    itinerary = Itinerary.find(params[:itinerary_id])
+    SequentialCalls.new(
+      itinerary.id,
+      { start_address: itinerary.start_address, end_address: itinerary.end_address },
+      DateTime.now.strftime("%l:%M%P"),
+      4
+    ).create_possible_routes
+    favorite = user.possible_routes
+      .joins(:itinerary)
+      .where("possible_routes.itinerary_id = ?", [params[:itinerary_id]]).last(4)
     render json: favorite
   end
 
   def edit
     user = User.find_by(uid: params[:uid])
-    # binding.pry
     favorite = user.itineraries.find(params[:itinerary_id])
     favorite.update(favorite_params)
     render json: favorite
