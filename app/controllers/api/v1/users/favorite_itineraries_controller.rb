@@ -11,10 +11,7 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
   def index
     user = User.find_by(uid: params[:uid])
     user_id = user.id
-    favorites = user.itineraries.where(favorite: true)
-    fav_trips = favorites.each do |fav|
-      CreateWholeTrip.new(user_id, fav)
-    end
+    favorites = user.possible_routes.joins(:itinerary).where('itineraries.favorite = true')
     render json: favorites
   end
 
@@ -32,7 +29,3 @@ private
   end
 
 end
-# they will post the users/:uid/itinerary/itinerary_id
-# favorites#create
-
-# get users/:id/favorites
