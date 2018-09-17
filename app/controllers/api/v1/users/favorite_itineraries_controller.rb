@@ -26,6 +26,7 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     # binding.pry
     favorite = user.itineraries.find(params[:itinerary_id])
     favorite.update(favorite_params)
+    render json: favorite
   end
 
 private

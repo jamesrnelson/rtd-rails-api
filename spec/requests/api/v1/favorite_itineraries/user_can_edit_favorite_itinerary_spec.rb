@@ -12,8 +12,10 @@ describe 'PUT /api/v1/users/:id/favorite_itinerary' do
     step_1 = create(:step, possible_route_id: possible_route_2.id)
     step_2 = create(:step, possible_route_id: possible_route_2.id)
 
-    patch "/api/v1/users/#{user.uid}/favorites/#{fav_itinerary_2.id}", params: {title: '7th Circle'}
-
+    put "/api/v1/users/#{user.uid}/favorites/#{fav_itinerary_2.id}", params: {title: '7th Circle'}
+    edited = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
+    expect(edited[:title]).to eq('7th Circle')
+    expect(edited[:title]).to_not eq('concert')
   end
 end
