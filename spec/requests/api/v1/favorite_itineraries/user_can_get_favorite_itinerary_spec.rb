@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "GET /api/v1/users/:uid/favorites" do
-  it "can get a users favorite itineraries" do
+  it "can get a users favorite itineraries", vcr: true do
     user = create(:user, uid: 'abc123')
 
     fav_itinerary_1 = user.itineraries.create(start_address: "100 W. 14th Pkwy Denver CO 80204", end_address: "1331 17th St Denver CO", favorite: true, title: 'commute')
@@ -17,14 +17,12 @@ describe "GET /api/v1/users/:uid/favorites" do
     
     expect(response).to be_successful
     favorite_itineraries = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
     expect(favorite_itineraries[0][:title]).to eq('commute')
     expect(favorite_itineraries[1][:title]).to eq('concert')
-    expect(favorite_itineraries[0][:steps].length).to eq(2)
-    expect(favorite_itineraries[1][:steps].length).to eq(2)
+    expect(favorite_itineraries[0][:possible_routes][0][:steps].length).to eq(2)
+    expect(favorite_itineraries[1][:possible_routes][0][:steps].length).to eq(2)
   end
 end
-
 describe "GET /api/v1/users/:uid/favorites/:favorite_id" do
   it "can get a single favorite itinerary" do
     user = create(:user, uid: 'abc123')
