@@ -5,8 +5,11 @@ class Api::V1::Users::ItinerariesController < ApiController
     @new_itinerary = CreateWholeTrip.new(user.id, itinerary_params)
     @new_itinerary.create_steps
     itinerary = @new_itinerary.itinerary
-    possible_route = itinerary.possible_routes
-    render json: possible_route
+    base_time = itinerary.possible_routes[0].departure_time
+    CreateOtherPossibleRoute.new(itinerary.id, itinerary_params, base_time, 15).create_steps
+    possible_routes = itinerary.possible_routes
+    updated_itinerary = Itinerary.find(itinerary.id)
+    render json: updated_itinerary.possible_routes
   end
 
   def index
@@ -17,6 +20,6 @@ class Api::V1::Users::ItinerariesController < ApiController
   private
 
     def itinerary_params
-      params.permit(:id, :start_address, :end_address, :departure_time, :arrival_time)
+      params.permit(:uid, :start_address, :end_address, :departure_time, :arrival_time)
     end
 end
