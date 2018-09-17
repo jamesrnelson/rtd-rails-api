@@ -1,7 +1,7 @@
 class PossibleRouteSerializer < ActiveModel::Serializer
   attributes  :itinerary_id, :start_address, :end_address,
               :favorite, :departure_time, :arrival_time,
-              :duration, :distance, :steps, :title
+              :duration, :distance, :title, :steps
 
   def favorite
     object.itinerary.favorite
