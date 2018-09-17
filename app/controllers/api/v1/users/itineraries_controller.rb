@@ -6,8 +6,7 @@ class Api::V1::Users::ItinerariesController < ApiController
     @new_itinerary.create_steps
     itinerary = @new_itinerary.itinerary
     base_time = itinerary.possible_routes[0].departure_time
-    CreateOtherPossibleRoute.new(itinerary.id, itinerary_params, base_time, 15).create_steps
-    possible_routes = itinerary.possible_routes
+    SequentialCalls.new(itinerary.id, itinerary_params, base_time, 3).create_possible_routes
     updated_itinerary = Itinerary.find(itinerary.id)
     render json: updated_itinerary.possible_routes
   end
