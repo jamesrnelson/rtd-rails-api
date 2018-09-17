@@ -16,6 +16,7 @@ describe 'GET /api/v1/users/:id/itineraries' do
 
     expect(response).to be_successful
     itineraries = JSON.parse(response.body, symbolize_names: true)
+    # binding.pry
     expect(itineraries.length).to eq(2)
     expect(itineraries[0][:steps].length).to eq(2)
     expect(itineraries[1][:steps].length).to eq(2)
