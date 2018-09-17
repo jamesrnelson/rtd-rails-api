@@ -17,12 +17,24 @@ describe 'POST /api/v1/users/:id/itineraries' do
   it 'also accepts json including arrival time', vcr: true do
     user = create(:user, uid: 'abc123')
 
-
     post "/api/v1/users/#{user.uid}/itineraries", params: { start_address: "100 W 14th Ave Pkwy Denver CO 80204", end_address: "1331 17th St Denver CO", arrival_time: '17:00'}
 
     expect(response).to be_successful
 
     new_itinerary = JSON.parse(response.body, symbolize_names: true)
     expect(new_itinerary[0][:steps].length).to eq(3)
+  end
+
+  it 'returns multiple possible routes for one itinerary', vcr: true do
+    user = create(:user, uid: 'abc123')
+
+    post "/api/v1/users/#{user.uid}/itineraries", params: { start_address: "661 Logan St, Denver, CO 80203", end_address: "750 North Colorado Boulevard, Denver, CO 80206", departure_time: '17:00'}
+
+    expect(response).to be_successful
+
+    new_itineraries = JSON.parse(response.body, symbolize_names:true)
+    expect(new_itineraries.length).to eq(2)
+    expect(new_itineraries[0][:departure_time]).to eq("5:06pm")
+    expect(new_itineraries[1][:departure_time]).to eq("5:21pm")
   end
 end
