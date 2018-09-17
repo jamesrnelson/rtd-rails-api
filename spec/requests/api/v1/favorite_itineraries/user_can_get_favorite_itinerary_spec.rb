@@ -22,7 +22,9 @@ describe "GET /api/v1/users/:uid/favorites" do
     expect(favorite_itineraries[0][:steps].length).to eq(2)
     expect(favorite_itineraries[1][:steps].length).to eq(2)
   end
-enddescribe "GET /api/v1/users/:uid/favorites/:favorite_id" do
+end
+
+describe "GET /api/v1/users/:uid/favorites/:favorite_id" do
   it "can get a single favorite itinerary" do
     user = create(:user, uid: 'abc123')
 
