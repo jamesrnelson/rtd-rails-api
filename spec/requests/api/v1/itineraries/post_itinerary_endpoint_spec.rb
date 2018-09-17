@@ -33,8 +33,10 @@ describe 'POST /api/v1/users/:id/itineraries' do
     expect(response).to be_successful
 
     new_itineraries = JSON.parse(response.body, symbolize_names:true)
-    expect(new_itineraries.length).to eq(2)
+    expect(new_itineraries.length).to eq(4)
     expect(new_itineraries[0][:departure_time]).to eq("5:06pm")
     expect(new_itineraries[1][:departure_time]).to eq("5:21pm")
+    expect(new_itineraries[2][:departure_time]).to eq("5:36pm")
+    expect(new_itineraries[3][:departure_time]).to eq("5:51pm")
   end
 end
