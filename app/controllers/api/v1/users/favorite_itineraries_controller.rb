@@ -29,6 +29,14 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     render json: favorite
   end
 
+  def delete
+    user = User.find_by(uid: params[:uid])
+    itinerary = user.itineraries.find(params[:itinerary_id])
+    itinerary.update(favorite: false)
+    favorites = user.possible_routes.joins(:itinerary).where('itineraries.favorite = true')
+    render json: favorites
+  end
+
 private
 
   def favorite_params
