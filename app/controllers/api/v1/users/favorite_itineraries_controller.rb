@@ -13,9 +13,8 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     user_id = user.id
     favorites = user.itineraries.where(favorite: true)
     fav_trips = favorites.each do |fav|
-      CreateWholeTrip(user_id, fav)
+      CreateWholeTrip.new(user_id, fav)
     end
-    binding.pry
     render json: favorites
   end
 
