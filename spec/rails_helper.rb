@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'webmock/rspec'
 require 'support/factory_bot'
+require 'faker'
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/cassettes"
