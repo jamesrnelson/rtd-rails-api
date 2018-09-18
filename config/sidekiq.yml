@@ -1,8 +1,8 @@
 :schedule:
   delete_all_favorite_possible_routes:
-    cron: '* * * * 6'
+    cron: '0 0 * * 6'
     class: DeleteAllFavoritePossibleRoutes
 
   delete_expiring_possible_routes:
-    cron: '* * * * 0'
+    cron: '5 0 * * 0-6'
     class: DeleteExpiringPossibleRoutes
