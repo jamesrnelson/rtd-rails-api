@@ -30,6 +30,10 @@ gem 'rack-cors'
 gem 'faraday'
 gem 'figaro'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'sidekiq'
+gem 'sidekiq-scheduler', '~> 1'
+gem 'sinatra'
+gem 'redis'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,6 +45,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'bundler'
+  gem 'faker'
 end
 
 group :development do

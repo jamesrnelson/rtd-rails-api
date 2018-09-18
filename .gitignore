@@ -28,3 +28,5 @@ coverage
 /config/application.yml
 
 /spec/fixtures
+
+dump.rdb

@@ -1,0 +1,12 @@
+:schedule:
+  delete_all_favorite_possible_routes:
+    cron: '0 0 * * 6'
+    class: DeleteAllFavoritePossibleRoutes
+
+  delete_expiring_possible_routes:
+    cron: '5 0 * * 0-6'
+    class: DeleteExpiringPossibleRoutes
+
+  create_possible_routes_for_favorites:
+    cron: '10 0 * * 1'
+    class: CreatePossibleRoutesForFavorites
