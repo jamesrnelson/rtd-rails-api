@@ -26,8 +26,13 @@ module RtdRailsApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
+<<<<<<< HEAD
         origins '*'
         resource '*', headers: :any, methods: :any
+=======
+        origins 'https://rtd-mobile.herokuapp.com/'
+        resource '*', headers: :any, methods: [:get, :post, :patch, :options]
+>>>>>>> cors stuff
       end
     end
 
