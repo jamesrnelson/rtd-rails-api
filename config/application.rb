@@ -22,6 +22,10 @@ module RtdRailsApi
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
   
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => 'https://rtd-mobile.herokuapp.com/',
+      'Access-Control-Request-Method' => %w{GET POST PATCH DELETE OPTIONS}.join(",")
+    }
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
