@@ -2,7 +2,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: localhost
   pool: 5
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
@@ -32,4 +32,4 @@ production:
 #   host: db 
 # production:  
 #   <<: *default  
-#   database: app_name_production
+#   database: default
