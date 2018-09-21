@@ -17,10 +17,10 @@ describe "GET /api/v1/users/:uid/favorites" do
 
     expect(response).to be_successful
     favorite_itineraries = JSON.parse(response.body, symbolize_names: true)
-    expect(favorite_itineraries[0][:title]).to eq('commute')
-    expect(favorite_itineraries[1][:title]).to eq('concert')
-    expect(favorite_itineraries[0][:steps].length).to eq(2)
-    expect(favorite_itineraries[1][:steps].length).to eq(2)
+    expect(favorite_itineraries[0][:start_address]).to eq(fav_itinerary_1.start_address)
+    expect(favorite_itineraries[0][:end_address]).to eq(fav_itinerary_1.end_address)
+    expect(favorite_itineraries[1][:start_address]).to eq(fav_itinerary_2.start_address)
+    expect(favorite_itineraries[1][:end_address]).to eq(fav_itinerary_2.end_address)
   end
 end
 
