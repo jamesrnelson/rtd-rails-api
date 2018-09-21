@@ -15,7 +15,7 @@ describe 'PUT /api/v1/users/:id/favorite_itinerary' do
     put "/api/v1/users/#{user.uid}/favorites/#{fav_itinerary_2.id}", params: {title: '7th Circle'}
     edited = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
-    expect(edited[:title]).to eq('7th Circle')
-    expect(edited[:title]).to_not eq('concert')
+    expect(edited[:start_address]).to eq(fav_itinerary_2.start_address)
+    expect(edited[:end_address]).to eq(fav_itinerary_2.end_address)
   end
 end

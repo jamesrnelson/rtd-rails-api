@@ -5,23 +5,24 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     itinerary = user.itineraries.find(params[:itinerary_id])
     itinerary.update(favorite: true)
     itinerary.update(favorite_params)
-    render json: itinerary.possible_routes
+    render json: itinerary
   end
 
   def index
     user = User.find_by(uid: params[:uid])
     user_id = user.id
-    favorites = user.possible_routes.joins(:itinerary).where('itineraries.favorite = true')
+    favorites = user.itineraries.where(favorite: true)
     render json: favorites
   end
 
   def show
     user = User.find_by(uid: params[:uid])
+    base_time = DateTime.now.strftime("%l:%M%P")
     itinerary = Itinerary.find(params[:itinerary_id])
     SequentialCalls.new(
       itinerary.id,
       { start_address: itinerary.start_address, end_address: itinerary.end_address },
-      DateTime.now.strftime("%l:%M%P"),
+      base_time,
       4
     ).create_possible_routes
     favorite = user.possible_routes
