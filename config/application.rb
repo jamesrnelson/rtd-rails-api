@@ -27,10 +27,12 @@ module RtdRailsApi
       'Access-Control-Request-Method' => %w{GET POST PATCH DELETE OPTIONS}.join(",")
     }
 
+    config.time_zone = 'Mountain Time (US & Canada)'
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :patch, :options, :delete]
+        resource '*', headers: :any, methods: :any
       end
     end
 
@@ -46,6 +48,5 @@ module RtdRailsApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.time_zone = 'Mountain Time (US & Canada)'
   end
 end
