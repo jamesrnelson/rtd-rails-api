@@ -17,7 +17,7 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def show
     user = User.find_by(uid: params[:uid])
-    base_time = DateTime.now.strftime("%l:%M%P")
+    base_time = Time.zone.now.strftime("%l:%M%P")
     itinerary = Itinerary.find(params[:itinerary_id])
     SequentialCalls.new(
       itinerary.id,
