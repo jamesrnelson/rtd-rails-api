@@ -42,8 +42,7 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
     user = User.find_by(uid: params[:uid])
     itinerary = user.itineraries.find(params[:itinerary_id])
     itinerary.update(favorite: false)
-    favorites = user.possible_routes.joins(:itinerary).where('itineraries.favorite = true')
-    render json: favorites
+    render json: itinerary.id
   end
 
 private
