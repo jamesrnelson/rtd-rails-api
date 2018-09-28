@@ -26,6 +26,7 @@ module RtdRailsApi
       allow do
         origins '*'
         resource '*', headers: :any, methods: :any
+        # origins 'https://rtd-mobile.herokuapp.com/'
       end
     end
 
