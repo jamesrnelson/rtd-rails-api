@@ -22,6 +22,16 @@ The back end is deployed on heroku [here](http://rtd-revamp-api.herokuapp.com/ap
 
 * [Waffle board](https://waffle.io/jamesrnelson/rtd-rails-api)
 
+## Authors
+ 
+ __Front End__
+ * Austin Wiedenman [GitHub profile](https://github.com/Awiedenman)/[Turing profile](https://alumni.turing.io/alumni/austin-wiedenman)
+ * Quinlan Hill [GitHub profile](https://github.com/quinhill)/[Turing profile](https://alumni.turing.io/alumni/quinlan-hill)
+ 
+ __Back End__
+ * Jamison Ordway [GitHub profile](https://github.com/jamisonordway)/[Turing profile](https://alumni.turing.io/alumni/jamison-ordway)
+ * James Nelson [GitHub profile](https://github.com/jamesrnelson)/[Turing profile](https://alumni.turing.io/alumni/jimmy-nelson)
+
 ## Set up and Use
 
 * Set up the backend by cloning down the repo and following standard Rails setup procedure
