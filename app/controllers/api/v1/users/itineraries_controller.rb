@@ -1,21 +1,29 @@
 class Api::V1::Users::ItinerariesController < ApiController
 
   def create
-    user = User.find_by(uid: params[:uid])
-    @new_itinerary = CreateWholeTrip.new(user.id, itinerary_params)
-    @new_itinerary.create_steps
-    itinerary = @new_itinerary.itinerary
-    base_time = itinerary.possible_routes[0].departure_time
-    SequentialCalls.new(itinerary.id, itinerary_params, base_time, 3).create_possible_routes
-    updated_itinerary = Itinerary.find(itinerary.id)
-    render json: updated_itinerary.possible_routes
+    if User.find_by(uid: params[:uid]).present?
+      user = User.find_by(uid: params[:uid])
+      @new_itinerary = CreateWholeTrip.new(user.id, itinerary_params)
+      @new_itinerary.create_steps
+      itinerary = @new_itinerary.itinerary
+      base_time = itinerary.possible_routes[0].departure_time
+      SequentialCalls.new(itinerary.id, itinerary_params, base_time, 3).create_possible_routes
+      updated_itinerary = Itinerary.find(itinerary.id)
+      render json: updated_itinerary.possible_routes
+    else
+      render status: 404
+    end
   end
 
   def index
-    user = User.find_by(uid: params[:uid])
-    amount = params[:amount]
-    recent_itineraries = user.itineraries.where("favorite = false").last(amount)
-    render json: recent_itineraries
+    if User.find_by(uid: params[:uid]).present?
+      user = User.find_by(uid: params[:uid])
+      amount = params[:amount]
+      recent_itineraries = user.itineraries.where("favorite = false").last(amount)
+      render json: recent_itineraries
+    else
+      render status: 404
+    end
   end
 
   private
