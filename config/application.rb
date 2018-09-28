@@ -24,8 +24,19 @@ module RtdRailsApi
 
     config.time_zone = 'Mountain Time (US & Canada)'
 
+<<<<<<< HEAD
+=======
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: :any
+      end
+    end
+    
+>>>>>>> removes trailing slash in cors.rb
     config.active_job.queue_adapter = :sidekiq
-
+    
+    # origins 'https://rtd-mobile.herokuapp.com/'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
