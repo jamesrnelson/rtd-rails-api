@@ -13,7 +13,9 @@ class Api::V1::Users::ItinerariesController < ApiController
 
   def index
     user = User.find_by(uid: params[:uid])
-    render json: user.possible_routes
+    amount = params[:amount]
+    recent_itineraries = user.itineraries.where("favorite = false").last(amount)
+    render json: recent_itineraries
   end
 
   private
