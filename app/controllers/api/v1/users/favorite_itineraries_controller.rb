@@ -10,7 +10,6 @@ class Api::V1::Users::FavoriteItinerariesController < ApiController
 
   def index
     user = User.find_by(uid: params[:uid])
-    user_id = user.id
     favorites = user.itineraries.where(favorite: true)
     render json: favorites
   end
