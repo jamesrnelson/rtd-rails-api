@@ -6,8 +6,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    user = User.find_by(uid: params[:uid])
-    render json: user
+    if User.find_by(uid: params[:uid]).present?
+      info = GetUserInfo.new(params[:uid]).show_all
+      render json: info
+    else
+      render status: 404
+    end
   end
 
   private
